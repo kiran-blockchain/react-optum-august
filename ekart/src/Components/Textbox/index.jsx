@@ -1,20 +1,18 @@
 import { useState } from "react";
 
-const Textbox = ({config}) => {
-   const[data,setData] = useState(config.value)
+const Textbox = ({ config }) => {
+    const [data, setData] = useState(config.value)
     return (
-        <div class="mb-3">
-            <label for={config.id} class="form-label">{config.displayText}</label>
-            <input type={config.type}
-                className="form-control"
-                id={config.id}
-                name={config.name}
-                value={data}
-                onChange={e => {  
-                    setData(e.target.value) 
-                    config.onChange(e.target.value);
-                }}
-                placeholder={config.placeholder} />
+        <div class="row mb-3">
+            <label for={config.id} class="col-sm-2 col-form-label">{config.displayText}</label>
+            <div class="col-sm-10">
+                <input type={config.type} class="form-control" id={config.id} name={config.name}
+                    value={data}
+                    onChange={e => {
+                        setData(e.target.value)
+                        config.onChange(e.target)
+                    }} />
+            </div>
         </div>
     )
 }
