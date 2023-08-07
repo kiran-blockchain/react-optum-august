@@ -14,7 +14,7 @@ const Register = () => {
     const handleChange = (e)=>{
         setSignup({...signup,[e.name]:e.value});
     };
-    const firstName = {
+    const firstNameConfig = {
         displayText:'First Name',
         id:'txtFirstName',
         name:'firstName',
@@ -23,7 +23,7 @@ const Register = () => {
         value:signup.firstName,
         onChange:handleChange
     };
-    const lastName = {
+    const lastNameConfig = {
         displayText:'Last Name',
         id:'txtLastName',
         name:'lastName',
@@ -36,8 +36,8 @@ const Register = () => {
 
     return (
         <form>
-            <Textbox config={firstName}/>
-            <Textbox config={lastName}/>
+            <Textbox config={firstNameConfig}/>
+            <Textbox config={lastNameConfig}/>
             
             <button type="submit" class="btn btn-primary">Sign in</button>
             {JSON.stringify(signup)}

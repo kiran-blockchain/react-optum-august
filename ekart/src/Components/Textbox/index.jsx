@@ -5,7 +5,7 @@ const Textbox = ({ config }) => {
     return (
         <div class="row mb-3">
             <label for={config.id} class="col-sm-2 col-form-label">{config.displayText}</label>
-            <div class="col-sm-10">
+            <div class="col-sm-3">
                 <input type={config.type} class="form-control" id={config.id} name={config.name}
                     value={data}
                     onChange={e => {
