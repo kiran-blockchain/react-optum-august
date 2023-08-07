@@ -1,18 +1,20 @@
 import { useState } from "react";
 
-const Textbox = () => {
-    const [email, setEmail] = useState('kiran@gmail.com')
+const Textbox = ({config}) => {
+   const[data,setData] = useState(config.value)
     return (
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email"
-                class="form-control"
-                id="exampleFormControlInput1"
-                value={email}
-                onChange={e => {
-                    setEmail(e.target.value);
+            <label for={config.id} class="form-label">{config.displayText}</label>
+            <input type={config.type}
+                className="form-control"
+                id={config.id}
+                name={config.name}
+                value={data}
+                onChange={e => {  
+                    setData(e.target.value) 
+                    config.onChange(e.target.value);
                 }}
-                placeholder="name@example.com" />{email}
+                placeholder={config.placeholder} />
         </div>
     )
 }
