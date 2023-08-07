@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Textbox from "../Components/Textbox";
+import Checkbox from "../Components/Checkbox";
 
 const Register = () => {
     const [signup, setSignup] = useState({
@@ -14,6 +15,9 @@ const Register = () => {
     const handleChange = (e)=>{
         setSignup({...signup,[e.name]:e.value});
     };
+    const handleCheck =(e)=>{
+            setSignup({...signup,[e.name]:e.checked});
+    }
     const firstNameConfig = {
         displayText:'First Name',
         id:'txtFirstName',
@@ -33,12 +37,20 @@ const Register = () => {
         onChange:handleChange
     };
     
+    const agreeTermsConfig = {
+        displayText:'I Agree Terms',
+        id:'chkAgreeTerms',
+        name:'agreeTerms',
+        type:"checkbox",
+        value:'',
+        onChange:handleCheck
+    }
 
     return (
         <form>
             <Textbox config={firstNameConfig}/>
             <Textbox config={lastNameConfig}/>
-            
+            <Checkbox config={agreeTermsConfig}/>
             <button type="submit" class="btn btn-primary">Sign in</button>
             {JSON.stringify(signup)}
         </form>
