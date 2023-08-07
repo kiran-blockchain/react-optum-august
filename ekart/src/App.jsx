@@ -1,5 +1,6 @@
 import Header from "./Components/Header";
 import Textbox from "./Components/Textbox";
+import Products from "./Pages/Products";
 import Register from "./Pages/Register";
 
 export const App = () => {
@@ -18,7 +19,8 @@ export const App = () => {
         <div class="container-fluid">
            <Header appName={companyDetails} 
            defaultPage={mainPage}/>
-           <Register/>
+           {/* <Register/> */}
+           <Products/>
            
         </div>
     );
