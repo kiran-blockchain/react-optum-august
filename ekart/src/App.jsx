@@ -4,9 +4,10 @@ export const App = () => {
     //logical section
 
     //rendering section
+    const companyName ="Optum"
     return (
         <div class="container-fluid">
-           <Header/>
+           <Header appName={companyName}/>
         </div>
     );
 }
