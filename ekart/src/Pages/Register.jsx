@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Textbox from "../Components/Textbox";
 import Checkbox from "../Components/Checkbox";
+import Select from "../Components/SelectBox";
 
 const Register = () => {
     const [signup, setSignup] = useState({
@@ -50,6 +51,7 @@ const Register = () => {
         <form>
             <Textbox config={firstNameConfig}/>
             <Textbox config={lastNameConfig}/>
+            <Select/>
             <Checkbox config={agreeTermsConfig}/>
             <button type="submit" class="btn btn-primary">Sign in</button>
             {JSON.stringify(signup)}
