@@ -1,4 +1,4 @@
-import { Provider } from "react-redux"
+
 import { Counter } from "./components/Counter"
 import { Display } from "./components/Display"
 
