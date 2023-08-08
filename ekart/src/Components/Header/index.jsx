@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = (props) => {
     return (
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -9,14 +11,13 @@ const Header = (props) => {
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">
-                                    {props.defaultPage}</a>
+                               <Link className="nav-link" to="/">Login</Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
+                            <Link className="nav-link" to="/products">Products</Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
+                            <Link className="nav-link" to="/register">Register</Link>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
