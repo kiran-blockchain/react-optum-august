@@ -1,14 +1,6 @@
-const Select = () => {
-    const countryList = [{
-        name: "India",
-        key: "IND"
-    }, {
-        name: "United States",
-        key: "USA"
-    }];
-
-     const renderCountryList  =()=>{
-        return countryList.map((item,index)=>{
+const Select = ({config}) => {
+     const renderCountryList  =()=>{    
+        return config.data.map((item,index)=>{
             return  <option key={index} value={item.key}>{item.name}</option>
         })
      }

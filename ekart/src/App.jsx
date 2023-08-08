@@ -19,7 +19,7 @@ export const App = () => {
         <div class="container-fluid">
            <Header appName={companyDetails} 
            defaultPage={mainPage}/>
-           {/* <Register/> */}
+           <Register/>
            <Products/>
            
         </div>
