@@ -4,9 +4,12 @@ import Textbox from "./Components/Textbox";
 import Products from "./Pages/Products";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
+import { useState } from "react";
+import Protected from "./Components/Protected";
+import LoginContext from "./Context/LoginProvider";
 
 export const App = () => {
-    //logical section
+    const [isSignedIn, setSignedIn] = useState(true);
 
     //rendering section
     let companyDetails = {
@@ -16,19 +19,35 @@ export const App = () => {
     }
     const mainPage = "Electronics";
 
+    const signin = () => {
+        if (localStorage.getItem('token') != '') {
+            setSignedIn(true);
+        } else {
+            setSignedIn(false);
+        }
+    }
+    const logout = ()=>{
+        localStorage.clear();
+        setSignedIn(false);
+    }
+
 
     return (
-        <div class="container-fluid">
-            <Header appName={companyDetails}
-                defaultPage={mainPage} />
-            <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/products" element={<Products />} />
-            </Routes>
+        <LoginContext.Provider value={{isLoggedIn:isSignedIn,logout:logout,login:signin}}>
+            <div class="container-fluid">
+                <Header appName={companyDetails}
+                    defaultPage={mainPage} />
+                <Routes>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
 
-
-        </div>
+                    <Route path="/products" element={<Protected isSignedIn={isSignedIn}>
+                        <Products />
+                    </Protected>}>
+                    </Route>
+                </Routes>
+            </div>
+        </LoginContext.Provider>
     );
 }
 

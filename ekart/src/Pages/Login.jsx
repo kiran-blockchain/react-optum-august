@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Textbox from "../Components/Textbox";
 import { apiPost, useApiPost } from "../hooks/useApi";
 import { useNavigate } from "react-router-dom";
+import LoginContext from "../Context/LoginProvider";
 
 const Login =()=>{
-    const [login,setLogin] = useState({username:'kminchelle',password:'0lelplR'});
+    const [signin,setLogin] = useState({username:'kminchelle',password:'0lelplR'});
     const [error,setError] = useState(false);
+    const {login} = useContext(LoginContext)
     const navigate = useNavigate();
     const handleChange = (e) => {
-        setLogin({ ...login, [e.name]: e.value });
+        setLogin({ ...signin, [e.name]: e.value });
     };
     const userNameConfig = {
         displayText: 'UserName',
@@ -16,7 +18,7 @@ const Login =()=>{
         name: 'username',
         placeholder: 'Enter User Name',
         type: "text",
-        value: login.username,
+        value: signin.username,
         onChange: handleChange
     };
     const passwordConfig = {
@@ -25,13 +27,16 @@ const Login =()=>{
         name: 'password',
         placeholder: 'Enter Password',
         type: "password",
-        value: login.password,
+        value: signin.password,
         onChange: handleChange
     };
     const handleLogin =async()=>{
-       const data =await apiPost('https://dummyjson.com/auth/login',login);
+       const data = await apiPost('https://dummyjson.com/auth/login',signin);
        console.log(data);
        if(data.status=='200'){
+       
+        localStorage.setItem('token',data.result.token);
+        login();
         navigate("/products");
        }
        else{
