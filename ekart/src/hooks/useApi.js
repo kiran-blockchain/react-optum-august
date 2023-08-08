@@ -35,3 +35,12 @@ export const useApiPost = (url, payload) => {
     }, []);
     return result;
 };
+export const apiPost = async (url,payload) => {
+    try {
+        const response = await axios.post(url, payload);
+       return {status:200,result:response.data};
+    }
+    catch (ex) {
+        return{ status: 400, data: '' };
+    }
+}
