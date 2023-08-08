@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LoginContext from "../../Context/LoginProvider";
+import { useSelector } from "react-redux";
 
 const Header = (props) => {
     const navigate = useNavigate();
     const { isLoggedIn, logout } = useContext(LoginContext);
-
+    const cart = useSelector(x=>x.cart)
     return (
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -29,6 +30,12 @@ const Header = (props) => {
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <Link className="nav-link" to="/products">Products</Link>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#">Cart Items : {cart.totalProducts}</a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="#">Total Amount : {cart.totalValue}</a>
                             </li>
 
                             <li class="nav-item">
