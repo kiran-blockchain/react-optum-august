@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.users-container {
+  display: flex;
+  flex-direction: column;
+  border: #53536b solid 1px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.single-user {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: #53536b solid 1px;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #a5dcde;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
