@@ -3,6 +3,7 @@ import Textbox from "../Components/Textbox";
 import Checkbox from "../Components/Checkbox";
 import Select from "../Components/SelectBox";
 import { useApiGet } from "../hooks/useApi";
+import SignIn from "../Components/SignIn";
 
 const Register = () => {
     const countries = useApiGet("https://restcountries.com/v2/all");
@@ -58,14 +59,15 @@ const Register = () => {
     }
 
     return (
-        <form>
-            <Textbox config={firstNameConfig} />
-            <Textbox config={lastNameConfig} />
-            <Select config={selectBoxConfig} />
-            <Checkbox config={agreeTermsConfig} />
-            <button type="submit" class="btn btn-primary">Sign in</button>
-            {JSON.stringify(signup)}
-        </form>
+        <SignIn/>
+        // <form>
+        //     <Textbox config={firstNameConfig} />
+        //     <Textbox config={lastNameConfig} />
+        //     <Select config={selectBoxConfig} />
+        //     <Checkbox config={agreeTermsConfig} />
+        //     <button type="submit" class="btn btn-primary">Sign in</button>
+        //     {JSON.stringify(signup)}
+        // </form>
     )
 }
 

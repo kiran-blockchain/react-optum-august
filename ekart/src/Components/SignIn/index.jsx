@@ -1,0 +1,57 @@
+import { useFormik } from "formik";
+import { loginSchema } from "../../utils/loginValidation";
+import * as yup from 'yup';
+const SignIn = () => {
+    const formik = useFormik({
+        initialValues: {
+            username: "kiran",
+            password: "xxxxx"
+        },
+        validationSchema: loginSchema,
+        onSubmit: values => {
+            console.log(values);
+        }
+    })
+    return (
+        <form>
+            <div class="row mb-3">
+                <label for="username" class="col-sm-2 col-form-label">Enter Username</label>
+                <div class="col-sm-3 " >
+                    <input type="text" class="form-control" id="username"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.username}
+                        name="username" />
+                        {formik.errors.username ? (<div class="text-danger">
+                    {formik.errors.username}
+                </div>) : null}
+                </div>
+                
+                
+            </div>
+
+            <div class="row mb-3">
+                <label for="password" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-3">
+                    <input type="password" class="form-control" id="password"
+                        name="password"
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                        value={formik.values.password} />
+                    {formik.errors.password ? (<div class="text-danger">
+                        Invalid Password
+                    </div>) : null}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <button onClick={formik.handleSubmit} className="btn btn-success">Sign In</button>
+                </div>
+            </div>
+            <h6>{JSON.stringify(formik.errors)}</h6>
+        </form>
+
+    )
+};
+
+export default SignIn;
