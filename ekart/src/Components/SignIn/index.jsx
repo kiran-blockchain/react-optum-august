@@ -4,8 +4,9 @@ import * as yup from 'yup';
 const SignIn = () => {
     const formik = useFormik({
         initialValues: {
-            username: "kiran",
-            password: "xxxxx"
+            username: "",
+            password: "",
+            confirmPassword: ''
         },
         validationSchema: loginSchema,
         onSubmit: values => {
@@ -22,12 +23,12 @@ const SignIn = () => {
                         onBlur={formik.handleBlur}
                         value={formik.values.username}
                         name="username" />
-                        {formik.errors.username ? (<div class="text-danger">
-                    {formik.errors.username}
-                </div>) : null}
+                    {formik.touched.username && formik.errors.username ? (<div class="text-danger">
+                        {formik.errors.username}
+                    </div>) : null}
                 </div>
-                
-                
+
+
             </div>
 
             <div class="row mb-3">
@@ -38,8 +39,21 @@ const SignIn = () => {
                         onBlur={formik.handleBlur}
                         onChange={formik.handleChange}
                         value={formik.values.password} />
-                    {formik.errors.password ? (<div class="text-danger">
-                        Invalid Password
+                    {formik.touched.password && formik.errors.password ? (<div class="text-danger">
+                        {formik.errors.password}
+                    </div>) : null}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="confirmPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-3">
+                    <input type="password" class="form-control" id="confirmPassword"
+                        name="confirmPassword"
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                        value={formik.values.confirmPassword} />
+                    {formik.touched.confirmPassword && formik.errors.confirmPassword ? (<div class="text-danger">
+                        {formik.errors.confirmPassword}
                     </div>) : null}
                 </div>
             </div>
