@@ -24,14 +24,14 @@ describe('Events Component', () => {
    /**
     * userEvent(): increment value
     */
-   test('Should have increment value', async () => {
-      const user = userEvent.setup();
+   test('Should have increment value',  async() => {
+     // const user = userEvent.setup();
       render(<Events />)
 
       const incrementBtn = screen.getByRole("button", {
          name: /Increment/i
       })
-      await user.click(incrementBtn);
+      await userEvent.click(incrementBtn);
       expect(screen.getByText(1)).toBeInTheDocument();
    })
 })
